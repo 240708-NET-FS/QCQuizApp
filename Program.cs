@@ -74,7 +74,7 @@ public class Program
                 if(text is not null)
                 {
                     string cata, question, answer;
-                    string[] splitText = text.Split(',');
+                    string[] splitText = text.Split(';');
                     cata = splitText[0];
                     question = splitText[1];
                     answer = splitText[2];
