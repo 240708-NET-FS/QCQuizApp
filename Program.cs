@@ -18,37 +18,43 @@ public class Program
                 case 1:
                 {
                     RandomQuiz(lst_Questions);
+                    Console.WriteLine("Continue?(Y/N)");
                     break;
                 }
                 case 2:
                 {
                     FocusedQuiz(lst_Questions);
+                    Console.WriteLine("Continue?(Y/N)");
                     break;
                 }
                 case 3:
                 {
                     ComprehensiveQuiz(lst_Questions);
+                    Console.WriteLine("Continue?(Y/N)");
                     break;
                 } 
                 case 4:
                 default:
                 {
+                    NotQutting = false;
                     break;
                 }
             }
-            Console.WriteLine("Continue?(Y/N)");
-            string? answer = Console.ReadLine();
-            if(answer is not null)
+            if(NotQutting)
             {
-                if(!answer.Equals(string.Empty))
+                string? answer = Console.ReadLine();
+                if(answer is not null)
                 {
-                    if(answer.Equals('N') || answer.Equals('n'))
+                    if(!answer.Equals(string.Empty))
                     {
-                        NotQutting = false;
+                        if(answer.Equals("N") || answer.Equals("n"))
+                        {
+                            NotQutting = false;
+                        }
                     }
+                    else
+                        NotQutting = false;
                 }
-                else
-                    NotQutting = false;
             }
         }
         Console.Write("Good luck with your QC!!");
