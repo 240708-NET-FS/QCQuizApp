@@ -27,7 +27,7 @@ public class Questions
 
     public string RevealAnswer()
     {
-        return $"The answer is: {Answer}";
+        return $"The answer is: {Answer}\n";
     }
 
     internal string GetCatagory()
