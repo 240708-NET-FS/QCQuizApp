@@ -1,0 +1,24 @@
+Catagory:HTML & CSS,Question:Define what HTML is.,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe the structure of an HTML Document and what is included in the different sections.,Answer:Yes.
+Catagory:HTML & CSS,Question:List HTML Common Tags and why they are different from divs.,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe how/where you link an external CSS sheet into an HTML Document.,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe how/where you link an external JS sheet into an HTML Document.,Answer:Yes.
+Catagory:HTML & CSS,Question:Understand the structure of a CSS style rule.,Answer:Yes.
+Catagory:HTML & CSS,Question:Understand and explain the CSS box model.,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe the different ways to add styling to an HTML Document.,Answer:Yes.
+Catagory:HTML & CSS,Question:Understand the correct syntax for styling different elements such as by tag`class`id`etc.,Answer:Yes.
+Catagory:HTML & CSS,Question:What is the CSS priority in regards to inline`internal and external.,Answer:Yes.
+Catagory:HTML & CSS,Question:Please construct an HTML form.,Answer:Yes.
+Catagory:HTML & CSS,Question:How do you add comments to an HTML Document.,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe the syntax of different HTML elements/tags including the table tag.,Answer:Yes.
+Catagory:HTML & CSS,Question:Take in user input using a variety of input tags (text`checkbox`etc).,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe how to use Bubbling and the correct syntax for it.,Answer:Yes.
+Catagory:HTML & CSS,Question:Describe the benefits of combinators and how to use them.,Answer:Yes.
+Catagory:HTML & CSS,Question:How would you make responsive webpages using CSS.,Answer:Yes.
+Catagory:Typescript,Question:What are the differences between Typescript and Javascript.,Answer:Yes.
+Catagory:Typescript,Question:How would you use Typescript outside of React/Angular.,Answer:Yes.
+Catagory:Typescript,Question:How do you declare and use an enum in TypeScript.,Answer:Yes.
+Catagory:Typescript,Question:What different TypeScript-unique features transpile to in JavaScript.,Answer:Yes.
+Catagory:Typescript,Question:What is the proper syntax for declaring a strong static type.,Answer:Yes.
+Catagory:Typescript,Question:How would implement OOP in Typescript.,Answer:Yes.
+Category:Typescript,Question:What is the process of transpilation and its importance in web devlopment,Answer:Transpilation plays a critical role in modern web development by enabling developers to write code in advanced languages or using modern syntax features and then converting that code into a version that is compatible with a broader range of environments.
