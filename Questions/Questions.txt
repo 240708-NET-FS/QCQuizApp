@@ -20,5 +20,5 @@ Catagory:Typescript,Question:How would you use Typescript outside of React/Angul
 Catagory:Typescript,Question:How do you declare and use an enum in TypeScript.,Answer:Yes.
 Catagory:Typescript,Question:What different TypeScript-unique features transpile to in JavaScript.,Answer:Yes.
 Catagory:Typescript,Question:What is the proper syntax for declaring a strong static type.,Answer:Yes.
-Catagory:Typescript,Question:How would implement OOP in Typescript.,Answer:Yes.
+Catagory:Typescript,Question:How would you implement OOP in Typescript.,Answer:Yes.
 Category:Typescript,Question:What is the process of transpilation and its importance in web devlopment,Answer:Transpilation plays a critical role in modern web development by enabling developers to write code in advanced languages or using modern syntax features and then converting that code into a version that is compatible with a broader range of environments.

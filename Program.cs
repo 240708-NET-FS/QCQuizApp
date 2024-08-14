@@ -119,7 +119,7 @@ public class Program
                     rng_ndx = rng.Next(0,lst_Questions.Count);
                 }
                 Questions questionToAsk = lst_Questions[rng_ndx];
-                Console.WriteLine($"Question #{ctr}!\n{questionToAsk.RevealQuestion()}");
+                Console.WriteLine($"Question #{ctr+1}!\n{questionToAsk.RevealQuestion()}");
                 Console.ReadKey();
                 Console.WriteLine(questionToAsk.RevealAnswer());
                 alreadyAsked.Add(rng_ndx);
