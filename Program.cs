@@ -1,8 +1,12 @@
-﻿using Question;
+﻿using System.Formats.Asn1;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using Question;
 
 public class Program
 {
     static List<string> lst_Catagories = new List<string>();
+    static string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Questions\\Questions.txt");
     public static void Main(string[] args)
     {
         bool NotQutting = true;
@@ -10,7 +14,7 @@ public class Program
        
         while(NotQutting)
         {
-            Console.WriteLine("Quiz Time! Select a difficulty level!\n1:)Random Quiz\n2:)Focused Quiz\n3:)Comprehensive Quiz\n4:)Quit");
+            Console.WriteLine("Quiz Time! Select a difficulty level!\n1:)Random Quiz\n2:)Focused Quiz\n3:)Comprehensive Quiz\n4:)Create Questions\n5:)Quit");
             int usr_inp = 0;
             int.TryParse(Console.ReadLine(), out usr_inp);
             switch(usr_inp)
@@ -32,8 +36,14 @@ public class Program
                     ComprehensiveQuiz(lst_Questions);
                     Console.WriteLine("Continue?(Y/N)");
                     break;
-                } 
+                }
                 case 4:
+                {
+                    CreateQuestions();
+                    Console.WriteLine("Continue?(Y/N)");
+                    break;
+                } 
+                case 5:
                 default:
                 {
                     NotQutting = false;
@@ -61,14 +71,119 @@ public class Program
         
     }
 
+    private static void CreateQuestions()
+    {
+        bool enteringQuestions = true;
+        int questionsAdded = 0;
+        string? category = string.Empty;
+        string? answer = string.Empty;
+        string? newQuestion = string.Empty;
+        List<string> lst_CompletedQuestions = new List<string>();
+        while (enteringQuestions)
+        {
+            if(questionsAdded > 0)
+            {
+                Console.WriteLine("Same category?(Y/N)");
+                char keyInfo = Console.ReadKey(intercept: true).KeyChar;
+                    switch(keyInfo)
+                    {
+                        case 'Y':
+                        case 'y':
+                        {
+                            answer = string.Empty;
+                            newQuestion = string.Empty;
+                            break;
+                        }
+                        case 'N':
+                        case 'n':
+                        {
+                            Console.WriteLine("What category is this question for?");
+                            category = Console.ReadLine();
+                            answer = string.Empty;
+                            newQuestion = string.Empty;
+                            break;
+                        }
+                        default:
+                        {
+                            break;
+                        }
+                    }
+            }
+            else
+            {
+                Console.WriteLine("What category is this question for?");
+                category = Console.ReadLine();
+            }
+            if(category is not null)
+            {
+                Console.WriteLine("What is the question?");
+                newQuestion = Console.ReadLine();
+                if(newQuestion is not null)
+                {   
+                    Console.WriteLine("Do you know the answer?(Y/N)");
+                    char keyInfo = Console.ReadKey(intercept: true).KeyChar;
+                    switch(keyInfo)
+                    {
+                        case 'Y':
+                        case 'y':
+                        {
+                            answer = Console.ReadLine();
+                            break;
+                        }
+                        case 'N':
+                        case 'n':
+                        {
+                            answer = "Unknown";
+                            break;
+                        }
+                        default:
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            if(string.IsNullOrEmpty(category) || string.IsNullOrEmpty(newQuestion) || string.IsNullOrEmpty(answer))
+            {
+                Console.Clear();
+                Console.WriteLine("Category, question or answer was null / empty.");
+                continue;
+            }
+            else
+            {
+                string completedLine = $"Category:{category};Question:{newQuestion};Answer:{answer}";
+                lst_CompletedQuestions.Add(completedLine);
+                Console.WriteLine("Add another question?(Y/N)");
+                char keyInfo = Console.ReadKey(intercept: true).KeyChar;
+                switch(keyInfo)
+                {
+                    case 'Y':
+                    case 'y':
+                    {
+                        questionsAdded++;
+                        Console.Clear();
+                        break;
+                    }
+                    case 'N':
+                    case 'n':
+                    default:
+                    {
+                        File.AppendAllLines(filePath, lst_CompletedQuestions.ToArray());
+                        enteringQuestions = false;
+                        break;
+                    }
+                    
+                }
+            }
+        }
+    }
+
     public static List<Questions> GatherQuestions()
     {
         List<Questions> lst_Questions = new List<Questions>();
         int QuestionsAdded = 0;
         try
         {
-            var currentDirectoryPath = Directory.GetCurrentDirectory();
-            var filePath = Path.Combine(currentDirectoryPath, "Questions\\Questions.txt");
             // Open the text file using a stream reader.
             using StreamReader reader = new(filePath);
             while(!reader.EndOfStream)
