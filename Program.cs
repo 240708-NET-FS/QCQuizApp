@@ -1,7 +1,4 @@
-﻿using System.Formats.Asn1;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using Question;
+﻿using Question;
 
 public class Program
 {
