@@ -238,7 +238,9 @@ public class Program
                 }
                 Questions questionToAsk = lst_Questions[rng_ndx];
                 Console.WriteLine($"Question #{ctr+1}!\n{questionToAsk.RevealQuestion()}");
-                Console.ReadKey();
+                ConsoleKey inp = Console.ReadKey(intercept: true).Key;
+                if(inp == ConsoleKey.Escape)
+                    break;
                 Console.WriteLine(questionToAsk.RevealAnswer());
                 alreadyAsked.Add(rng_ndx);
             }
@@ -268,7 +270,9 @@ public class Program
             if(questionToAsk.GetCatagory() != Catagory)
                 continue;
             Console.WriteLine($"Question #{actualCount}!\n{questionToAsk.RevealQuestion()}");
-            Console.ReadKey();
+            ConsoleKey inp = Console.ReadKey(intercept: true).Key;
+            if(inp == ConsoleKey.Escape)
+                break;
             Console.WriteLine(questionToAsk.RevealAnswer());
             actualCount++;
         }
@@ -277,12 +281,43 @@ public class Program
     //Go from index 0 to number of questions gathered.
     private static void ComprehensiveQuiz(List<Questions> lst_Questions)
     {
-        for (int ctr = 0; ctr <= lst_Questions.Count-1; ctr++)
+        bool random = false;
+        Console.WriteLine("Would you like to go through all of your questions in order? (Y/N)");
+        string usr_inp = string.Empty;
+        usr_inp = Console.ReadKey(intercept: true).KeyChar.ToString();
+        if(usr_inp.Equals("Y") || usr_inp.Equals("y"))
+            random = true;
+        if(!random)
         {
-            Questions questionToAsk = lst_Questions[ctr];
-            Console.WriteLine($"Question #{ctr+1}!\n{questionToAsk.RevealQuestion()}");
-            Console.ReadKey();
-            Console.WriteLine(questionToAsk.RevealAnswer());
+            for (int ctr = 0; ctr <= lst_Questions.Count-1; ctr++)
+            {
+                Questions questionToAsk = lst_Questions[ctr];
+                Console.WriteLine($"Question #{ctr+1}!\n{questionToAsk.RevealQuestion()}");
+                ConsoleKey inp = Console.ReadKey(intercept: true).Key;
+                if(inp == ConsoleKey.Escape)
+                    break;
+                Console.WriteLine(questionToAsk.RevealAnswer());
+            }
+        }
+        else
+        {
+            Random rng = new();
+            int rng_ndx = rng.Next(0,lst_Questions.Count);
+            List<int> alreadyAsked = new List<int>();
+            for (int ctr = 0; ctr <= lst_Questions.Count-1; ctr++)
+            {
+                while(alreadyAsked.Contains(rng_ndx))
+                {
+                    rng_ndx = rng.Next(0,lst_Questions.Count);
+                }
+                Questions questionToAsk = lst_Questions[rng_ndx];
+                Console.WriteLine($"Question #{ctr+1}!\n{questionToAsk.RevealQuestion()}");
+                ConsoleKey inp = Console.ReadKey(intercept: true).Key;
+                if(inp == ConsoleKey.Escape)
+                    break;
+                Console.WriteLine(questionToAsk.RevealAnswer());
+                alreadyAsked.Add(rng_ndx);
+            }
         }
     }
 
