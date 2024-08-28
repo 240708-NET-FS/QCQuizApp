@@ -285,7 +285,7 @@ public class Program
         Console.WriteLine("Would you like to go through all of your questions in order? (Y/N)");
         string usr_inp = string.Empty;
         usr_inp = Console.ReadKey(intercept: true).KeyChar.ToString();
-        if(usr_inp.Equals("Y") || usr_inp.Equals("y"))
+        if(usr_inp.Equals("N") || usr_inp.Equals("n"))
             random = true;
         if(!random)
         {
